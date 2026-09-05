@@ -1,3 +1,9 @@
+# Group final project
+1. Vann Sona -> Leader
+2. Kruy Kimty -> member
+3. Seven Borinz -> member
+
+# Project Structure
 library_management_system/
 │
 ├── run.py                         ← Start Flask
