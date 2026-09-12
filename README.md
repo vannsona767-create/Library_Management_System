@@ -1,9 +1,11 @@
 # Group final project
+
 1. Vann Sona -> Leader
 2. Kruy Kimty -> member
 3. Seven Borinz -> member
 
 # Project Structure
+
 library_management_system/
 │
 ├── run.py                         ← Start Flask
@@ -71,3 +73,81 @@ library_management_system/
         │   └── main.js
         │
         └── images/
+# Our ERD structure
+
+┌──────────────┐
+│    users     │
+├──────────────┤
+│ id PK        │
+│ name         │
+│ email        │
+│ password     │
+│ phone        │
+│ address      │
+│ created_at   │
+└──────┬───────┘
+       │
+       │ 1:M
+       ▼
+┌──────────────┐
+│  borrowings  │
+├──────────────┤
+│ id PK        │
+│ user_id FK   │
+│ book_id FK   │
+│ borrow_date  │
+│ due_date     │
+│ return_date  │
+│ status       │
+│ created_at   │
+└──────┬───────┘
+       │
+       │ M:1
+       ▼
+┌──────────────┐
+│    books     │
+├──────────────┤
+│ id PK        │
+│ title        │
+│ author       │
+│ isbn         │
+│ description  │
+│ quantity     │
+│ available    │
+│ category_id  │
+│ created_at   │
+└──────┬───────┘
+       │
+       │ M:1
+       ▼
+┌──────────────┐
+│  categories  │
+├──────────────┤
+│ id PK        │
+│ name         │
+│ description  │
+│ created_at   │
+└──────────────┘
+
+
+┌──────────────┐
+│    users     │
+└──────┬───────┘
+       │ 1:M
+       ▼
+┌──────────────┐
+│  user_roles  │
+├──────────────┤
+│ user_id PK FK│
+│ role_id PK FK│
+│ created_at   │
+└──────┬───────┘
+       │ M:1
+       ▼
+┌──────────────┐
+│    roles     │
+├──────────────┤
+│ id PK        │
+│ name         │
+│ description  │
+└──────────────┘
