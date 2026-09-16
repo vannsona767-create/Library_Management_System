@@ -71,3 +71,23 @@ library_management_system/
         │   └── main.js
         │
         └── images/
+
+
+------------------------------------------------------------------
+
+" Borin work part "
+
+    step 1 :
+
+- write some code on run.py
+- write some text on requirements
+- write some code on main.py in route folder in app folder
+- add init.py to app folder
+- write some code on config.py in app folder
+- write some code on extensions.py in app folder
+
+goal : python run.py
+       	     ↓
+	http://127.0.0.1:5000/
+             ↓
+	Library Management System - Stage 1 setup OK

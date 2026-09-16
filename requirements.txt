@@ -1,0 +1,5 @@
+Flask==3.0.3  # វាជួយឱ្យយើងបង្កើត Website/Web Application
+Flask-SQLAlchemy==3.1.1  # វាជួយឱ្យយើងធ្វើការជាមួយ Database តាមរយៈ Python, ជំនួសឱ្យសរសេរ SQL ច្រើនៗយើងអាចបង្កើត Model ដូចជា our project folder structure
+Flask-Login==0.6.3  # វាគ្រប់គ្រង Login Session
+PyMySQL==1.1.0  # វាជួយឱ្យ Python/SQLAlchemy អាចទាក់ទងជាមួយ MySQL
+python-dotenv==1.0.1  # វាអនុញ្ញាតឱ្យយើងដាក់ Configuration/Secret នៅក្នុង .env ជំនួសឱ្យសរសេរ Password នៅក្នុង Python code ដោយផ្ទាល់
