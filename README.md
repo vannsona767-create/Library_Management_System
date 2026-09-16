@@ -91,3 +91,26 @@ goal : python run.py
 	http://127.0.0.1:5000/
              ↓
 	Library Management System - Stage 1 setup OK
+
+------------------------------------------------------------------
+
+    step 2 :
+
+I add sql file to our project bcos i need to test user table:
+
+How to import via phpMyAdmin
+- Start Apache and MySQL in the XAMPP control panel.
+- Open http://localhost/phpmyadmin.
+- Click Import in the top menu.
+- Choose the file database/library.sql from our project folder.
+- Click Go.
+
+------------------------------------------------------------------
+
+    step 3 :
+
+- add some code to __init__.py, book.py, borrowing.py, category.py,
+user.py in app/models folder
+- add some code to __init__.py in templates folder
+
+goal : for test database working by using cmd

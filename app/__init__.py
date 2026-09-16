@@ -14,6 +14,10 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'  # used later, once auth exists
 
+    # Import models so SQLAlchemy registers all tables/relationships
+    with app.app_context():
+        from app import models  # noqa: F401
+
     # Register blueprints (routes). More get added in later stages.
     from app.routes.main import main_bp
     app.register_blueprint(main_bp)
