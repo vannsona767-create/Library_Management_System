@@ -1,0 +1,228 @@
+/* =====================================================================
+   Design system - Library Management System
+   Purple theme, derived from the landing page reference
+   ===================================================================== */
+
+:root {
+    --color-primary: #4B3F8F;
+    --color-primary-dark: #241B4F;
+    --color-primary-light: #6C5CE7;
+    --color-accent: #B8A9E8;
+    --color-accent-light: #E4DEFB;
+    --color-text-dark: #241B4F;
+    --color-text-muted: #6b6180;
+    --color-white: #ffffff;
+
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-pill: 50px;
+
+    --shadow-soft: 0 15px 35px rgba(36, 27, 79, 0.35);
+    --shadow-card: 0 10px 25px rgba(36, 27, 79, 0.25);
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+}
+
+h1, h2, h3, h4, h5, .brand-font {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ---------- Buttons ---------- */
+.btn-brand {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-brand:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.btn-brand-outline {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 2px solid var(--color-white);
+    border-radius: var(--radius-pill);
+    padding: 0.7rem 1.9rem;
+    font-weight: 600;
+}
+
+.btn-brand-outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary-dark);
+}
+
+/* ---------- Navbar ---------- */
+.navbar-brand-logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-white) !important;
+}
+
+.navbar-lms {
+    background: transparent;
+    padding-top: 1.5rem;
+}
+
+.navbar-lms .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0.5rem;
+}
+
+.navbar-lms .nav-link:hover {
+    color: var(--color-white) !important;
+}
+
+/* ---------- Purple gradient page background ---------- */
+.gradient-bg {
+    min-height: 100vh;
+    background: radial-gradient(circle at 20% 20%, var(--color-primary-light) 0%, var(--color-primary) 45%, var(--color-primary-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-bg::before,
+.gradient-bg::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    background: var(--color-white);
+}
+
+.gradient-bg::before {
+    width: 500px;
+    height: 500px;
+    top: -150px;
+    left: -150px;
+}
+
+.gradient-bg::after {
+    width: 400px;
+    height: 400px;
+    bottom: -120px;
+    right: -100px;
+}
+
+/* ---------- Glass auth card ---------- */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 2.75rem 2.5rem;
+    position: relative;
+}
+
+.auth-card h2 {
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card);
+    font-size: 1.1rem;
+}
+
+.auth-close:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* Underline-style inputs, matching the screenshots */
+.underline-field {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+
+.underline-field label {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.underline-field input {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid var(--color-accent);
+    background: transparent;
+    padding: 0.35rem 1.8rem 0.35rem 0;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.underline-field input:focus {
+    outline: none;
+    border-bottom-color: var(--color-primary);
+}
+
+.underline-field .field-icon {
+    position: absolute;
+    right: 0;
+    bottom: 0.55rem;
+    color: var(--color-primary);
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 1.25rem;
+    color: var(--color-text-muted);
+}
+
+.auth-links a {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.form-check-label {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+}

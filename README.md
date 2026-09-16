@@ -114,3 +114,12 @@ user.py in app/models folder
 - add some code to __init__.py in templates folder
 
 goal : for test database working by using cmd
+
+------------------------------------------------------------------
+
+step 4 :
+- add code to app/routes/auth.py, app/templates/base.html, app/static/css/style.css
+- add some code to __init__.py in templates folder
+
+goal:
+python run.py -> http://127.0.0.1:5000/auth/register -> see interface register form
