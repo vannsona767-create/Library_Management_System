@@ -117,9 +117,19 @@ goal : for test database working by using cmd
 
 ------------------------------------------------------------------
 
-step 4 :
+    step 4 :
 - add code to app/routes/auth.py, app/templates/base.html, app/static/css/style.css
 - add some code to __init__.py in templates folder
 
 goal:
 python run.py -> http://127.0.0.1:5000/auth/register -> see interface register form
+
+------------------------------------------------------------------
+
+    step 5 :
+- add code to app/routes/main.py, app/static/css/style.css, app/templates/base.html, app/templates/home.html
+- add new code to app/templates/partials/navbar.html (we do it by follow our folder stucture)
+
+goal: 
+we can login and sigup 
+(admin@library.com : admin123) this email and pass for admin login test

@@ -21,27 +21,7 @@
 <body>
 
     {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-lms">
-        <div class="container">
-            <a class="navbar-brand navbar-brand-logo" href="{{ url_for('main.index') }}">LIBRARIA</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navMain">
-                <ul class="navbar-nav align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">HOME</a></li>
-                    {% if current_user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">LOGOUT</a></li>
-                    {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">LOGIN</a></li>
-                        <li class="nav-item">
-                            <a class="btn btn-brand-outline btn-sm ms-lg-2" href="{{ url_for('auth.register') }}">REGISTER</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% include 'partials/navbar.html' %}
     {% endblock %}
 
     {% with messages = get_flashed_messages(with_categories=true) %}

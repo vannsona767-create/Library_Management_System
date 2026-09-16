@@ -226,3 +226,91 @@ a {
     color: var(--color-text-muted);
     font-size: 0.92rem;
 }
+
+/* ---------- Hero (home page) ---------- */
+.hero-section {
+    position: relative;
+    z-index: 2;
+    padding: 6rem 1rem 8rem;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section .hero-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    color: var(--color-accent-light);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.hero-section p.hero-desc {
+    max-width: 640px;
+    margin: 0 auto 2.25rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
+    margin: 0 0.4rem;
+    font-size: 1.1rem;
+}
+
+.social-icons a:hover {
+    background: var(--color-white);
+    color: var(--color-primary-dark);
+}
+
+/* Decorative flowing wave lines, echoing the reference landing page */
+.wave-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* ---------- Feature cards ---------- */
+.features-section {
+    background: var(--color-white);
+    padding: 4.5rem 1rem;
+}
+
+.feature-card {
+    background: var(--color-accent-light);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    height: 100%;
+    box-shadow: var(--shadow-card);
+}
+
+.feature-card i {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.feature-card h5 {
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
