@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home | Library Management System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="section-label">
+            WELCOME TO OUR LIBRARY
+        </p>
+
+        <h1>
+            Discover Your Next
+            <span>Great Book</span>
+        </h1>
+
+        <p class="hero-text">
+            Welcome to our Library Management System.
+            Easily explore books, manage your borrowing
+            information, and keep track of your library activity.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/login" class="btn btn-primary">
+                Login
+            </a>
+
+            <a href="/register" class="btn btn-secondary">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-book">
+
+        <div class="book-card">
+
+            <div class="book-icon">
+                📖
+            </div>
+
+            <h3>
+                Your Library
+            </h3>
+
+            <p>
+                Read. Learn. Discover.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            WHAT YOU CAN DO
+        </p>
+
+        <h2>
+            Everything You Need
+        </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+            <h3>
+                Explore Books
+            </h3>
+
+            <p>
+                Discover books available in the library.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📖
+            </div>
+
+            <h3>
+                Borrow Books
+            </h3>
+
+            <p>
+                Keep track of the books you borrow.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                👤
+            </div>
+
+            <h3>
+                Manage Your Account
+            </h3>
+
+            <p>
+                View your account information and library activity.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CALL TO ACTION -->
+
+<section class="cta">
+
+    <h2>
+        Ready to Explore?
+    </h2>
+
+    <p>
+        Login to your account and start exploring the library.
+    </p>
+
+
+</section>
+
+{% endblock %}

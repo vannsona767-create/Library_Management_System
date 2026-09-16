@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+User Dashboard | Library
+{% endblock %}
+
+
+{% block navigation %}
+
+<a href="/profile">
+    Profile
+</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="dashboard">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+        <p class="section-label">
+            MY LIBRARY
+        </p>
+
+        <h1>
+            Welcome Back! 👋
+        </h1>
+
+        <p>
+            Welcome to your library dashboard.
+            You can view your borrowing information here.
+        </p>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+
+        <!-- Borrowed Books -->
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📖
+            </div>
+
+            <h3>
+                Borrowed Books
+            </h3>
+
+            <div class="stat-number">
+                {{ borrowed_count }}
+            </div>
+
+        </div>
+
+
+        <!-- Due Soon -->
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ⏰
+            </div>
+
+            <h3>
+                Due Soon
+            </h3>
+
+            <div class="stat-number">
+                {{ due_count }}
+            </div>
+
+        </div>
+
+
+        <!-- Available Books -->
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📚
+            </div>
+
+            <h3>
+                Available Books
+            </h3>
+
+            <div class="stat-number">
+                {{ available_count }}
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- RECENT BORROWINGS -->
+
+    <section class="recent">
+
+        <p class="section-label">
+            ACTIVITY
+        </p>
+
+        <h2>
+            Recent Borrowings
+        </h2>
+
+
+        {% if borrowings %}
+
+            {% for borrowing in borrowings %}
+
+                <div class="borrowing">
+
+                    <div class="book">
+
+                        <div class="book-icon">
+                            📖
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                {{ borrowing.book_title }}
+                            </h3>
+
+                            <p>
+                                {{ borrowing.borrowed_date }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="status">
+                        {{ borrowing.status }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+
+        {% else %}
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📚
+                </div>
+
+                <h3>
+                    No Borrowing Activity
+                </h3>
+
+                <p>
+                    You haven't borrowed any books yet.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+</div>
+
+{% endblock %}
