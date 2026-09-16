@@ -4,7 +4,6 @@
 Home | Library Management System
 {% endblock %}
 
-
 {% block content %}
 
 <section class="hero">
@@ -28,11 +27,11 @@ Home | Library Management System
 
         <div class="hero-buttons">
 
-            <a href="/login" class="btn btn-primary">
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary">
                 Login
             </a>
 
-            <a href="/register" class="btn btn-secondary">
+            <a href="{{ url_for('auth.register') }}" class="btn btn-secondary">
                 Create Account
             </a>
 
@@ -149,7 +148,6 @@ Home | Library Management System
     <p>
         Login to your account and start exploring the library.
     </p>
-
 
 </section>
 

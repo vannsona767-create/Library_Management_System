@@ -11,35 +11,50 @@
         {% endblock %}
     </title>
 
-    <!-- CSS -->
+    <!-- Bootstrap 5 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Our CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block extra_head %}
+    {% endblock %}
 </head>
 
 <body>
 
     <!-- NAVBAR -->
+    {% block navbar %}
+
     <header>
         <nav class="navbar">
 
             <!-- Logo -->
-            <a href="/home" class="logo">
+            <a href="{{ url_for('main.index') }}" class="logo">
                 📚 Library
             </a>
 
             <!-- Navigation -->
             <div class="nav-links">
 
-                <a href="/home">
+                <a href="{{ url_for('main.index') }}">
                     Home
                 </a>
 
                 {% block navigation %}
 
-                <a href="/login">
+                <a href="{{ url_for('auth.login') }}">
                     Login
                 </a>
 
-                <a href="/register">
+                <a href="{{ url_for('auth.register') }}">
                     Register
                 </a>
 
@@ -49,6 +64,39 @@
 
         </nav>
     </header>
+
+    {% endblock %}
+
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            <div class="container mt-3">
+
+                {% for category, message in messages %}
+
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
+                         role="alert">
+
+                        {{ message }}
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close">
+                        </button>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+    {% endwith %}
 
 
     <!-- MAIN CONTENT -->
@@ -70,8 +118,14 @@
     </footer>
 
 
-    <!-- JavaScript -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Our JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    {% block extra_scripts %}
+    {% endblock %}
 
 </body>
 

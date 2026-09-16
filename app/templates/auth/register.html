@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Library Management System{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div class="gradient-bg">
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <a href="{{ url_for('main.index') }}" class="auth-close" aria-label="Close">
+                <i class="bi bi-x-lg"></i>
+            </a>
+
+            <h2>Registration</h2>
+
+            <form method="POST" action="{{ url_for('auth.register') }}" novalidate>
+                <div class="underline-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                    <i class="bi bi-person field-icon"></i>
+                </div>
+
+                <div class="underline-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <i class="bi bi-envelope field-icon"></i>
+                </div>
+
+                <div class="underline-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="At least 6 characters" required minlength="6">
+                    <i class="bi bi-lock field-icon"></i>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
+                    <label class="form-check-label" for="agree">I agree to the terms &amp; conditions</label>
+                </div>
+
+                <button type="submit" class="btn btn-brand w-100">Register</button>
+            </form>
+
+            <p class="auth-links">Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

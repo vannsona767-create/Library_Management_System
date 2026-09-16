@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Library Management System{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div class="gradient-bg">
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <a href="{{ url_for('main.index') }}" class="auth-close" aria-label="Close">
+                <i class="bi bi-x-lg"></i>
+            </a>
+
+            <h2>Login</h2>
+
+            <form method="POST" action="{{ url_for('auth.login') }}" novalidate>
+                <div class="underline-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <i class="bi bi-envelope field-icon"></i>
+                </div>
+
+                <div class="underline-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="********" required>
+                    <i class="bi bi-lock field-icon"></i>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="auth-links" style="margin:0;">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-brand w-100">Login</button>
+            </form>
+
+            <p class="auth-links">Don't have an account? <a href="{{ url_for('auth.register') }}">Register</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
