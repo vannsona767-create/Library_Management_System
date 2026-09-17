@@ -612,3 +612,28 @@ a {
     color: #b02a2a;
     font-weight: 600;
 }
+
+/* ---------- Navbar dropdown ---------- */
+.navbar-lms .dropdown-menu {
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.navbar-lms .dropdown-item {
+    border-radius: var(--radius-md);
+    padding: 0.5rem 0.9rem;
+    font-size: 0.92rem;
+    color: var(--color-text-dark);
+}
+
+.navbar-lms .dropdown-item:hover {
+    background: var(--color-accent-light);
+    color: var(--color-primary);
+}
+
+.navbar-lms .dropdown-toggle::after {
+    margin-left: 0.4rem;
+}

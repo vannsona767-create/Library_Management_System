@@ -10,13 +10,22 @@
                 {% if current_user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('books.list_books') }}">BOOKS</a></li>
                     {% if current_user.is_admin %}
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('books.manage_books') }}">MANAGE BOOKS</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('borrowings.all_borrowings') }}">RECORDS</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">MANAGE</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+                                <li><a class="dropdown-item" href="{{ url_for('books.manage_books') }}">Books</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('categories.manage_categories') }}">Categories</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('admin.manage_users') }}">Members</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('borrowings.all_borrowings') }}">Borrowing Records</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.dashboard') }}">DASHBOARD</a></li>
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('borrowings.my_borrowings') }}">MY BOOKS</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('user.dashboard') }}">DASHBOARD</a></li>
                     {% endif %}
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user.profile') }}">PROFILE</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">LOGOUT</a></li>
                 {% else %}
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">LOGIN</a></li>

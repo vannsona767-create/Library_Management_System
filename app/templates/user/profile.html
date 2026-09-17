@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile - Libraria{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h2>My Profile</h2>
+        <p>Update your account details.</p>
+    </div>
+</div>
+
+<div class="page-wrap">
+    <div class="container pt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="panel">
+                    <form method="POST" action="{{ url_for('user.profile') }}" novalidate>
+
+                        <h5 class="mb-3">Account Details</h5>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label-lms">Username *</label>
+                            <input type="text" id="username" name="username" class="form-control-lms"
+                                   value="{{ current_user.username }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label-lms">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control-lms"
+                                   value="{{ current_user.email }}" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-label-lms">Member since</div>
+                            <div class="text-muted">
+                                {{ current_user.created_at.strftime('%d %b %Y') if current_user.created_at else '-' }}
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h5 class="mb-1">Change Password</h5>
+                        <p class="text-muted" style="font-size: 0.9rem;">
+                            Leave these blank to keep your current password.
+                        </p>
+
+                        <div class="mb-3">
+                            <label for="current_password" class="form-label-lms">Current password</label>
+                            <input type="password" id="current_password" name="current_password"
+                                   class="form-control-lms" autocomplete="current-password">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="new_password" class="form-label-lms">New password</label>
+                            <input type="password" id="new_password" name="new_password"
+                                   class="form-control-lms" autocomplete="new-password" minlength="6">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="confirm_password" class="form-label-lms">Confirm new password</label>
+                            <input type="password" id="confirm_password" name="confirm_password"
+                                   class="form-control-lms" autocomplete="new-password" minlength="6">
+                        </div>
+
+                        <button type="submit" class="btn btn-brand">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

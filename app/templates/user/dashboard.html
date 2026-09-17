@@ -44,9 +44,12 @@
         </div>
 
         <div class="mt-5">
-            <p class="text-muted">
-                Book browsing and borrowing history will appear here in a later stage.
-            </p>
+            <h5 class="mb-3">Quick Actions</h5>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{{ url_for('books.list_books') }}" class="btn btn-brand">Browse Books</a>
+                <a href="{{ url_for('borrowings.my_borrowings') }}" class="btn-outline-brand d-inline-flex align-items-center">My Borrowings</a>
+                <a href="{{ url_for('user.profile') }}" class="btn-outline-brand d-inline-flex align-items-center">Edit Profile</a>
+            </div>
         </div>
     </div>
 </div>

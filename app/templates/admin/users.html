@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Members - Libraria{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h2>Manage Members</h2>
+        <p>View and manage everyone registered with the library.</p>
+    </div>
+</div>
+
+<div class="page-wrap">
+    <div class="container pt-4">
+
+        <div class="panel mb-4">
+            <form method="GET" action="{{ url_for('admin.manage_users') }}" class="row g-3 align-items-end">
+                <div class="col-md-10">
+                    <label for="search" class="form-label-lms">Search members</label>
+                    <input type="text" id="search" name="search" class="form-control-lms"
+                           placeholder="Username or email" value="{{ search }}">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-brand w-100">Search</button>
+                </div>
+            </form>
+        </div>
+
+        {% if users %}
+            <div class="panel">
+                <div class="table-responsive">
+                    <table class="table table-lms align-middle">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Joined</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for member in users %}
+                                <tr>
+                                    <td>{{ member.username }}</td>
+                                    <td class="text-muted">{{ member.email }}</td>
+                                    <td>
+                                        {% if member.is_admin %}
+                                            <span class="badge-category">Admin</span>
+                                        {% else %}
+                                            <span class="text-muted">Member</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-muted">
+                                        {{ member.created_at.strftime('%d %b %Y') if member.created_at else '-' }}
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="{{ url_for('admin.user_detail', user_id=member.id) }}"
+                                           class="btn-outline-brand">View</a>
+                                        {% if member.id != current_user.id %}
+                                            <form method="POST"
+                                                  action="{{ url_for('admin.delete_user', user_id=member.id) }}"
+                                                  class="d-inline"
+                                                  onsubmit="return confirm('Delete {{ member.username }}? This also deletes their borrowing history.');">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill">Delete</button>
+                                            </form>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% if pagination.pages > 1 %}
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if pagination.has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('admin.manage_users', page=pagination.prev_num, search=search) }}">Previous</a>
+                            </li>
+                        {% endif %}
+                        {% for page_num in pagination.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                            {% if page_num %}
+                                <li class="page-item {% if page_num == pagination.page %}active{% endif %}">
+                                    <a class="page-link" href="{{ url_for('admin.manage_users', page=page_num, search=search) }}">{{ page_num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if pagination.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('admin.manage_users', page=pagination.next_num, search=search) }}">Next</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+
+        {% else %}
+            <div class="panel empty-state">
+                <i class="bi bi-people"></i>
+                <p>No members{% if search %} match that search{% endif %}.</p>
+                {% if search %}
+                    <a href="{{ url_for('admin.manage_users') }}" class="btn-outline-brand">Clear search</a>
+                {% endif %}
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

@@ -65,9 +65,14 @@
         </div>
 
         <div class="mt-5">
-            <p class="text-muted">
-                Book, category, member, and borrowing management tools will appear here in later stages.
-            </p>
+            <h5 class="mb-3">Quick Actions</h5>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{{ url_for('books.add_book') }}" class="btn btn-brand">+ Add Book</a>
+                <a href="{{ url_for('books.manage_books') }}" class="btn-outline-brand d-inline-flex align-items-center">Manage Books</a>
+                <a href="{{ url_for('categories.manage_categories') }}" class="btn-outline-brand d-inline-flex align-items-center">Manage Categories</a>
+                <a href="{{ url_for('admin.manage_users') }}" class="btn-outline-brand d-inline-flex align-items-center">Manage Members</a>
+                <a href="{{ url_for('borrowings.all_borrowings') }}" class="btn-outline-brand d-inline-flex align-items-center">Borrowing Records</a>
+            </div>
         </div>
     </div>
 </div>

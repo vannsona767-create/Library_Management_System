@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}{{ member.username }} - Libraria{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h2>{{ member.username }}</h2>
+        <p>{{ member.email }}</p>
+    </div>
+</div>
+
+<div class="page-wrap">
+    <div class="container pt-4">
+        <div class="row g-4">
+
+            <!-- Edit member -->
+            <div class="col-lg-4">
+                <div class="panel">
+                    <h5 class="mb-3">Member Details</h5>
+                    <form method="POST" action="{{ url_for('admin.edit_user', user_id=member.id) }}" novalidate>
+                        <div class="mb-3">
+                            <label for="username" class="form-label-lms">Username *</label>
+                            <input type="text" id="username" name="username" class="form-control-lms"
+                                   value="{{ member.username }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label-lms">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control-lms"
+                                   value="{{ member.email }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label-lms">Role *</label>
+                            <select id="role" name="role" class="form-select-lms"
+                                    {% if member.id == current_user.id %}disabled{% endif %}>
+                                <option value="user" {% if member.role == 'user' %}selected{% endif %}>Member</option>
+                                <option value="admin" {% if member.role == 'admin' %}selected{% endif %}>Admin</option>
+                            </select>
+                            {% if member.id == current_user.id %}
+                                <input type="hidden" name="role" value="admin">
+                                <small class="text-muted">You can't change your own role.</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-label-lms">Joined</div>
+                            <div class="text-muted">
+                                {{ member.created_at.strftime('%d %b %Y') if member.created_at else '-' }}
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-brand w-100">Save Changes</button>
+                    </form>
+
+                    <a href="{{ url_for('admin.manage_users') }}"
+                       class="btn-outline-brand d-block text-center mt-3">Back to members</a>
+                </div>
+            </div>
+
+            <!-- Borrowing history -->
+            <div class="col-lg-8">
+                <div class="panel">
+                    <h5 class="mb-3">
+                        Borrowing History
+                        {% if active_count %}
+                            <span class="badge-borrowed ms-2">{{ active_count }} active</span>
+                        {% endif %}
+                    </h5>
+
+                    {% if borrowings %}
+                        <div class="table-responsive">
+                            <table class="table table-lms align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Book</th>
+                                        <th>Borrowed</th>
+                                        <th>Due</th>
+                                        <th>Returned</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for record in borrowings %}
+                                        <tr>
+                                            <td>
+                                                <a href="{{ url_for('books.book_detail', book_id=record.book.id) }}">
+                                                    {{ record.book.title }}
+                                                </a>
+                                            </td>
+                                            <td class="text-muted">{{ record.borrow_date.strftime('%d %b %Y') }}</td>
+                                            <td class="text-muted">{{ record.due_date.strftime('%d %b %Y') }}</td>
+                                            <td class="text-muted">
+                                                {{ record.return_date.strftime('%d %b %Y') if record.return_date else '-' }}
+                                            </td>
+                                            <td>
+                                                {% if record.status == 'Returned' %}
+                                                    <span class="badge-returned">Returned</span>
+                                                {% elif record.status == 'Overdue' %}
+                                                    <span class="badge-overdue">Overdue</span>
+                                                {% else %}
+                                                    <span class="badge-borrowed">Borrowed</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="empty-state">
+                            <i class="bi bi-journal"></i>
+                            <p>This member hasn't borrowed anything yet.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
