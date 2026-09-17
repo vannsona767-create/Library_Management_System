@@ -71,9 +71,9 @@ def login():
         login_user(user, remember=remember)
         flash(f'Welcome back, {user.username}!', 'success')
 
-        # Admin/user dashboards are built in a later stage.
-        # For now, everyone lands on the homepage after login.
-        return redirect(url_for('main.index'))
+        if user.is_admin:
+            return redirect(url_for('admin.dashboard'))
+        return redirect(url_for('user.dashboard'))
 
     return render_template('auth/login.html')
 

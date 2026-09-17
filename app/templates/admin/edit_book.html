@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Book - Libraria{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h2>Edit Book</h2>
+        <p>Update the details for "{{ book.title }}".</p>
+    </div>
+</div>
+
+<div class="page-wrap">
+    <div class="container pt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="panel">
+                    <form method="POST" action="{{ url_for('books.edit_book', book_id=book.id) }}" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="title" class="form-label-lms">Title *</label>
+                                <input type="text" id="title" name="title" class="form-control-lms"
+                                       value="{{ form.get('title', book.title) }}" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="published_year" class="form-label-lms">Published year</label>
+                                <input type="number" id="published_year" name="published_year"
+                                       class="form-control-lms" min="1000" max="2100"
+                                       value="{{ form.get('published_year', book.published_year or '') }}">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="author" class="form-label-lms">Author *</label>
+                                <input type="text" id="author" name="author" class="form-control-lms"
+                                       value="{{ form.get('author', book.author) }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="isbn" class="form-label-lms">ISBN *</label>
+                                <input type="text" id="isbn" name="isbn" class="form-control-lms"
+                                       value="{{ form.get('isbn', book.isbn) }}" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="category_id" class="form-label-lms">Category</label>
+                                <select id="category_id" name="category_id" class="form-select-lms">
+                                    <option value="">Uncategorized</option>
+                                    {% for category in categories %}
+                                        <option value="{{ category.id }}"
+                                            {% if (form.get('category_id') or book.category_id)|string == category.id|string %}selected{% endif %}>
+                                            {{ category.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="quantity" class="form-label-lms">Total quantity *</label>
+                                <input type="number" id="quantity" name="quantity" class="form-control-lms"
+                                       min="0" value="{{ form.get('quantity', book.quantity) }}" required>
+                                <small class="text-muted">
+                                    {{ book.quantity - book.available_quantity }} currently on loan.
+                                </small>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="description" class="form-label-lms">Description</label>
+                                <textarea id="description" name="description" rows="4"
+                                          class="form-control-lms">{{ form.get('description', book.description or '') }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="submit" class="btn btn-brand">Save Changes</button>
+                            <a href="{{ url_for('books.manage_books') }}" class="btn-outline-brand d-inline-flex align-items-center">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

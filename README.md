@@ -133,3 +133,14 @@ python run.py -> http://127.0.0.1:5000/auth/register -> see interface register f
 goal: 
 we can login and sigup 
 (admin@library.com : admin123) this email and pass for admin login test
+
+------------------------------------------------------------------
+
+    step 6 :
+- work on User & admin dashboards
+
+------------------------------------------------------------------
+
+    step 7 :
+- work on Book browsing, search, and admin book CRUD
+

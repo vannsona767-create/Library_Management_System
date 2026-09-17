@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Libraria{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <p>Overview of the entire library system.</p>
+    </div>
+</div>
+
+<div class="dashboard-page">
+    <div class="container pt-5">
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-book-half"></i></div>
+                    <div class="stat-number">{{ stats.total_books }}</div>
+                    <div class="stat-label">Total Books</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-check2-circle"></i></div>
+                    <div class="stat-number">{{ stats.available_books }}</div>
+                    <div class="stat-label">Available Books</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-arrow-left-right"></i></div>
+                    <div class="stat-number">{{ stats.borrowed_books }}</div>
+                    <div class="stat-label">Borrowed Books</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-people"></i></div>
+                    <div class="stat-number">{{ stats.total_members }}</div>
+                    <div class="stat-label">Total Members</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-tags"></i></div>
+                    <div class="stat-number">{{ stats.total_categories }}</div>
+                    <div class="stat-label">Total Categories</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-hourglass-split"></i></div>
+                    <div class="stat-number">{{ stats.active_borrowings }}</div>
+                    <div class="stat-label">Active Borrowings</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-box-seam"></i></div>
+                    <div class="stat-number">{{ stats.returned_books }}</div>
+                    <div class="stat-label">Returned Books</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <p class="text-muted">
+                Book, category, member, and borrowing management tools will appear here in later stages.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

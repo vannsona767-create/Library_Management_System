@@ -84,6 +84,15 @@ a {
     padding-top: 1.5rem;
 }
 
+/* Opt-in solid variant, used on interior pages (e.g. dashboards) with a
+   plain light background, where a transparent navbar would be invisible.
+   Hero pages (home, login, register) keep the original transparent look. */
+.navbar-lms.navbar-solid {
+    background: var(--color-primary-dark);
+    padding: 0.9rem 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
 .navbar-lms .nav-link {
     color: rgba(255, 255, 255, 0.9) !important;
     letter-spacing: 1px;
@@ -313,4 +322,255 @@ a {
     color: var(--color-text-muted);
     font-size: 0.95rem;
     margin-bottom: 0;
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard-page {
+    background: #f7f5fc;
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+.dashboard-header {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+    padding: 2.5rem 0;
+    margin-bottom: -2.5rem;
+}
+
+.dashboard-header h2 {
+    margin-bottom: 0.25rem;
+}
+
+.dashboard-header p {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0;
+}
+
+.stat-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    height: 100%;
+}
+
+.stat-card .stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-accent-light);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 1rem;
+}
+
+.stat-card .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    line-height: 1;
+}
+
+.stat-card .stat-label {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
+}
+
+/* ---------- Page shell (interior pages) ---------- */
+.page-wrap {
+    background: #f7f5fc;
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+.page-header {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+    padding: 2.5rem 0;
+}
+
+.page-header h2 {
+    margin-bottom: 0.25rem;
+}
+
+.page-header p {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0;
+}
+
+/* ---------- Book cards ---------- */
+.book-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+}
+
+.book-card .book-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.book-card .book-author {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.book-card .book-meta {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.book-card .book-actions {
+    margin-top: auto;
+}
+
+/* ---------- Badges ---------- */
+.badge-available {
+    background: #e3f5e9;
+    color: #1b7a43;
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.badge-unavailable {
+    background: #fdeaea;
+    color: #b02a2a;
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.badge-category {
+    background: var(--color-accent-light);
+    color: var(--color-primary);
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* ---------- Panels, tables, forms ---------- */
+.panel {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: 1.75rem;
+}
+
+.table-lms thead th {
+    background: var(--color-accent-light);
+    color: var(--color-primary-dark);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+.table-lms tbody td {
+    vertical-align: middle;
+    color: var(--color-text-dark);
+}
+
+.form-label-lms {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.35rem;
+}
+
+.form-control-lms,
+.form-select-lms {
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    width: 100%;
+    background: var(--color-white);
+}
+
+.form-control-lms:focus,
+.form-select-lms:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.12);
+}
+
+.btn-brand-sm {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 0.4rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-brand-sm:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-outline-brand {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    border-radius: var(--radius-pill);
+    padding: 0.4rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-outline-brand:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-text-muted);
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ---------- Pagination ---------- */
+.pagination .page-link {
+    color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    margin: 0 0.15rem;
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
 }

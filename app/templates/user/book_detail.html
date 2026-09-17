@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}{{ book.title }} - Libraria{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h2>{{ book.title }}</h2>
+        <p>by {{ book.author }}</p>
+    </div>
+</div>
+
+<div class="page-wrap">
+    <div class="container pt-4">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="panel">
+                    <h5 class="mb-3">About this book</h5>
+                    {% if book.description %}
+                        <p class="text-muted">{{ book.description }}</p>
+                    {% else %}
+                        <p class="text-muted fst-italic">No description available.</p>
+                    {% endif %}
+
+                    <hr class="my-4">
+
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="form-label-lms">ISBN</div>
+                            <div class="text-muted">{{ book.isbn }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-label-lms">Category</div>
+                            <div class="text-muted">
+                                {{ book.category.name if book.category else 'Uncategorized' }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-label-lms">Published year</div>
+                            <div class="text-muted">{{ book.published_year or 'Unknown' }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-label-lms">Total copies</div>
+                            <div class="text-muted">{{ book.quantity }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="panel">
+                    <h5 class="mb-3">Availability</h5>
+
+                    {% if book.is_available %}
+                        <span class="badge-available">Available</span>
+                    {% else %}
+                        <span class="badge-unavailable">All copies out</span>
+                    {% endif %}
+
+                    <p class="text-muted mt-3 mb-4">
+                        {{ book.available_quantity }} of {{ book.quantity }} copies available.
+                    </p>
+
+                    <!-- Borrowing is implemented in Stage 8 -->
+                    <button class="btn btn-brand w-100" disabled>Borrow (coming in Stage 8)</button>
+
+                    <a href="{{ url_for('books.list_books') }}" class="btn-outline-brand d-block text-center mt-3">
+                        Back to all books
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

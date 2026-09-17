@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}My Dashboard - Libraria{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div class="container">
+        <h2>Welcome back, {{ current_user.username }}</h2>
+        <p>Here's a quick look at your library activity.</p>
+    </div>
+</div>
+
+<div class="dashboard-page">
+    <div class="container pt-5">
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-journal-bookmark"></i></div>
+                    <div class="stat-number">{{ stats.currently_borrowed }}</div>
+                    <div class="stat-label">Currently Borrowed</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-clock-history"></i></div>
+                    <div class="stat-number">{{ stats.total_borrowed }}</div>
+                    <div class="stat-label">Total Borrowed (all time)</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-exclamation-triangle"></i></div>
+                    <div class="stat-number">{{ stats.overdue }}</div>
+                    <div class="stat-label">Overdue</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="bi bi-book"></i></div>
+                    <div class="stat-number">{{ stats.available_books }}</div>
+                    <div class="stat-label">Books Available to Borrow</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <p class="text-muted">
+                Book browsing and borrowing history will appear here in a later stage.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
