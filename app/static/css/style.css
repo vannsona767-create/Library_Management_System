@@ -574,3 +574,41 @@ a {
     background: var(--color-primary-dark);
     color: var(--color-white);
 }
+
+/* ---------- Borrowing status badges ---------- */
+.badge-borrowed {
+    background: #e7edfd;
+    color: #2d4bad;
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.badge-returned {
+    background: #e3f5e9;
+    color: #1b7a43;
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.badge-overdue {
+    background: #fdeaea;
+    color: #b02a2a;
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.due-soon {
+    color: #b06a00;
+    font-weight: 600;
+}
+
+.due-late {
+    color: #b02a2a;
+    font-weight: 600;
+}

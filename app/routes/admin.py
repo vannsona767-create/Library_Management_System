@@ -27,6 +27,11 @@ def admin_required(f):
 @admin_bp.route('/dashboard')
 @admin_required
 def dashboard():
+    # Imported locally: borrowings.py imports admin_required from this module,
+    # so a top-level import here would be circular.
+    from app.routes.borrowings import refresh_overdue_statuses
+    refresh_overdue_statuses()
+
     total_books = Book.query.count()
 
     available_books = db.session.query(
@@ -39,7 +44,10 @@ def dashboard():
 
     total_members = User.query.filter_by(role='user').count()
     total_categories = Category.query.count()
-    active_borrowings = Borrowing.query.filter_by(status='Borrowed').count()
+    # Overdue loans are still active - the book is out
+    active_borrowings = Borrowing.query.filter(
+        Borrowing.status.in_(['Borrowed', 'Overdue'])
+    ).count()
     returned_books = Borrowing.query.filter_by(status='Returned').count()
 
     stats = {

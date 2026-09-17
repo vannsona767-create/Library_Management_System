@@ -61,8 +61,20 @@
                         {{ book.available_quantity }} of {{ book.quantity }} copies available.
                     </p>
 
-                    <!-- Borrowing is implemented in Stage 8 -->
-                    <button class="btn btn-brand w-100" disabled>Borrow (coming in Stage 8)</button>
+                    {% if already_borrowed %}
+                        <div class="alert alert-info py-2 mb-3" style="font-size: 0.9rem;">
+                            You already have this book out.
+                        </div>
+                        <a href="{{ url_for('borrowings.my_borrowings') }}" class="btn btn-brand w-100">
+                            View my borrowings
+                        </a>
+                    {% elif book.is_available %}
+                        <form method="POST" action="{{ url_for('borrowings.borrow_book', book_id=book.id) }}">
+                            <button type="submit" class="btn btn-brand w-100">Borrow this book</button>
+                        </form>
+                    {% else %}
+                        <button class="btn btn-brand w-100" disabled>No copies available</button>
+                    {% endif %}
 
                     <a href="{{ url_for('books.list_books') }}" class="btn-outline-brand d-block text-center mt-3">
                         Back to all books

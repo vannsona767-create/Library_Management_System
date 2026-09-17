@@ -24,10 +24,12 @@ def create_app():
     from app.routes.user import user_bp
     from app.routes.admin import admin_bp
     from app.routes.books import books_bp
+    from app.routes.borrowings import borrowings_bp
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(books_bp)
+    app.register_blueprint(borrowings_bp)
 
     return app

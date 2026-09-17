@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from app.extensions import db
-from app.models import Book, Category
+from app.models import Book, Category, Borrowing
 from app.routes.admin import admin_required
 
 books_bp = Blueprint('books', __name__, url_prefix='/books')
@@ -55,7 +55,16 @@ def list_books():
 def book_detail(book_id):
     """Show full details for a single book."""
     book = Book.query.get_or_404(book_id)
-    return render_template('user/book_detail.html', book=book)
+
+    # Does this user already have a copy out? Controls which button shows.
+    already_borrowed = Borrowing.query.filter(
+        Borrowing.user_id == current_user.id,
+        Borrowing.book_id == book.id,
+        Borrowing.status.in_(['Borrowed', 'Overdue'])
+    ).first() is not None
+
+    return render_template('user/book_detail.html',
+                            book=book, already_borrowed=already_borrowed)
 
 
 # =====================================================================
