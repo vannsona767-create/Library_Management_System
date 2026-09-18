@@ -149,4 +149,9 @@ we can login and sigup
     step 8 :
 - work on Borrow/return system
 
+------------------------------------------------------------------
+
+    step 9 :
+- work on Category management, member management, user profile
+
 
